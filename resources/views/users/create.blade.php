@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="bg-light p-4 rounded">
-        <h1>Add new user</h1>
+        <h1>@lang('user.title.add_new_user')</h1>
         <div class="lead">
-            Add new user and assign role.
+            @lang('user.title.add_new_user_and_assign_role')
         </div>
 
         <div class="container mt-4">
@@ -20,6 +20,18 @@
 
                     @if ($errors->has('name'))
                         <span class="text-danger text-left">{{ $errors->first('name') }}</span>
+                    @endif
+                </div>
+                <div class="mb-3">
+                    <label for="ic_number" class="form-label">IC Number</label>
+                    <input value="{{ old('ic_number') }}" 
+                        type="text" 
+                        class="form-control" 
+                        name="ic_number" 
+                        placeholder="IC Number" required>
+
+                    @if ($errors->has('ic_number'))
+                        <span class="text-danger text-left">{{ $errors->first('ic_number') }}</span>
                     @endif
                 </div>
                 <div class="mb-3">
@@ -42,6 +54,18 @@
                         placeholder="Username" required>
                     @if ($errors->has('username'))
                         <span class="text-danger text-left">{{ $errors->first('username') }}</span>
+                    @endif
+                </div>
+                <div class="mb-3">
+                    <label for="mobile_number" class="form-label">Mobile Number</label>
+                    <input value="{{ old('mobile_number') }}" 
+                        type="text" 
+                        class="form-control" 
+                        name="mobile_number" 
+                        placeholder="Mobile Number" required>
+
+                    @if ($errors->has('mobile_number'))
+                        <span class="text-danger text-left">{{ $errors->first('mobile_number') }}</span>
                     @endif
                 </div>
 
