@@ -2,7 +2,7 @@
 
 @section('content')
     
-    <h1 class="mb-3">Laravel 8 CRUD Operations with Example - codeanddeploy.com</h1>
+    <h1 class="mb-3">List of User Registed</h1>
 
     <div class="bg-light p-4 rounded">
         <h1>Users</h1>
@@ -15,25 +15,29 @@
             @include('layouts.partials.messages')
         </div>
 
-        <table class="table table-striped">
+        <table class="table table-responsive">
+           
             <thead>
             <tr>
-                <th scope="col" width="1%">#</th>
-                <th scope="col" width="15%">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col" width="10%">Username</th>
-                <th scope="col" width="1%" colspan="3"></th>    
+                <th scope="col" style="text-align: center">No</th>
+                <th scope="col" style="text-align: center">Name</th>
+                <th scope="col" style="text-align: center">Email</th>
+                <th scope="col" style="text-align: center">Username</th>
+                <th scope="col" style="text-align: center">Mobile Number</th>
+                <th scope="col" width="1%" colspan="3" style="text-align: center">Action</th>    
             </tr>
             </thead>
+           
             <tbody>
                 @foreach($users as $user)
                     <tr>
-                        <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->username }}</td>
-                        <td><a href="{{ route('users.show', $user->id) }}" class="btn btn-warning btn-sm">Show</a></td>
-                        <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm">Edit</a></td>
+                        <th style="text-align: center">{{ $loop->iteration }}</th>
+                        <td style="text-align: center">{{ $user->name }}</td>
+                        <td style="text-align: center">{{ $user->email }}</td>
+                        <td style="text-align: center">{{ $user->username }}</td>
+                        <td style="text-align: center">{{ $user->mobil_number }}</td>
+                        <td style="text-align: center"><a href="{{ route('users.show', $user->id) }}" class="btn btn-warning btn-sm">Show</a></td>
+                        <td style="text-align: center"><a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm">Edit</a></td>
                         <td>
                             {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
@@ -44,7 +48,7 @@
             </tbody>
         </table>
 
-        <div class="d-flex">
+        <div class="d-flex">  
             {!! $users->links() !!}
         </div>
 
